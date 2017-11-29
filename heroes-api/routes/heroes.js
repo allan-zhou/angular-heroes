@@ -14,9 +14,17 @@ router.get('/:id', function (req, res, next) {
 });
 
 router.post('/', function (req, res, next) {
+  console.log('heroes' + req);
+  console.log(req.body);
+  console.log(req.headers);
   let hero = {
     id: _.maxBy(db.heroes, o => o.id).id + 1,
-    name: req.body.name
+    name: req.body.name,
+    createBy: {
+      id: req.user.id,
+      username: req.user.username,
+      nickName: req.user.nickName
+    }
   };
   db.heroes.push(hero);
   res.json(hero);
@@ -42,6 +50,5 @@ router.put('/:id', function (req, res, next) {
     success: true
   });
 });
-
 
 module.exports = router;

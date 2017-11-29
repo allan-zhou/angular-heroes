@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 // Imports for loading & configuring the in-memory web api
@@ -15,8 +15,10 @@ import { HeroesComponent } from './heroes/heroes.component';
 import { LoginComponent } from './login/login.component';
 
 import { HeroService } from './services/hero.service';
-import { PassportService } from './services/passport.service';
+import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
+import { NoopInterceptor } from './interceptor/noop.interceptor';
+import { AuthInterceptor } from './interceptor/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,17 @@ import { UserService } from './services/user.service';
     HttpClientModule,
     // InMemoryWebApiModule.forRoot(InMemoryDataService),
   ],
-  providers: [HeroService, PassportService, UserService],
+  providers: [
+    AuthInterceptor,
+    AuthService,
+    HeroService,
+    UserService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { PassportService } from '../services/passport.service';
+import { AuthService } from '../services/auth.service';
 import { LoginFrom } from '../models/login-form';
 
 @Component({
@@ -13,21 +13,29 @@ import { LoginFrom } from '../models/login-form';
 
 
 export class LoginComponent implements OnInit {
-    @Input() model: LoginFrom;
+    @Input() loginForm: LoginFrom;
 
     constructor(
-        private passportService: PassportService,
-        private route: ActivatedRoute,
-        private location: Location
+        private authService: AuthService,
+        private activatedRoute: ActivatedRoute,
+        private location: Location,
+        private router: Router
     ) { }
 
     ngOnInit(): void {
-        this.model ={ username:'', password:'' }
+        this.loginForm = new LoginFrom();
     }
 
     onSubmit(): void {
-        console.log(this.model);
+        this.authService.getToken(this.loginForm)
+            .subscribe(data => {
+                console.log(data);
+                if (data.success) {
+                    localStorage.setItem('JWToken', data.token);
+                    this.router.navigateByUrl('/')
+                }
+            });
     }
 
-    get diagnostic() { return JSON.stringify(this.model); }
+    get diagnostic() { return JSON.stringify(this.loginForm); }
 }

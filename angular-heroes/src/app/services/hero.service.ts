@@ -13,7 +13,7 @@ const httpOptions = {
 
 @Injectable()
 export class HeroService {
-    private heroesUrl = ' http://192.168.1.217:3000/api/heroes';
+    private heroesUrl = 'http://192.168.1.217:3000/api/heroes';
 
     constructor(
         private http: HttpClient
