@@ -25,4 +25,9 @@ export class AuthService {
         return this.http.post(this.authUrl, this.loginForm, httpOptions);
         // return `Bearer ${token}`;
     }
+
+    login(loginForm: LoginFrom): Observable<any> {
+        const url = `${this.authUrl}/login`;
+        return this.http.post(url, loginForm, httpOptions);
+    }
 }

@@ -13,6 +13,7 @@ import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroesComponent } from './heroes/heroes.component';
 import { LoginComponent } from './login/login.component';
+import { TopmenuComponent } from './topmenu/topmenu.component';
 
 import { HeroService } from './services/hero.service';
 import { AuthService } from './services/auth.service';
@@ -26,7 +27,8 @@ import { AuthInterceptor } from './interceptor/auth.interceptor';
     HeroDetailComponent,
     DashboardComponent,
     HeroesComponent,
-    LoginComponent
+    LoginComponent,
+    TopmenuComponent
   ],
   imports: [
     BrowserModule,

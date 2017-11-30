@@ -24,14 +24,17 @@ export class LoginComponent implements OnInit {
 
     ngOnInit(): void {
         this.loginForm = new LoginFrom();
+        localStorage.removeItem('JWToken');
+        localStorage.removeItem('CurrentUser');
     }
 
     onSubmit(): void {
-        this.authService.getToken(this.loginForm)
+        this.authService.login(this.loginForm)
             .subscribe(data => {
                 console.log(data);
                 if (data.success) {
                     localStorage.setItem('JWToken', data.token);
+                    localStorage.setItem('CurrentUser', JSON.stringify(data.user))
                     this.router.navigateByUrl('/')
                 }
             });

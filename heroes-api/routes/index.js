@@ -41,6 +41,7 @@ router.post('/auth/login', function (req, res, next) {
         delete cloned.password; //返回的用户信息删除password
 
         res.json({
+            success: true,
             user: cloned,
             token: token,
             permissions: ''
@@ -67,7 +68,10 @@ router.post('/auth/token', function (req, res, next) {
         var cloned = _.clone(result);
         var token = getSignedToken(cloned);
 
-        res.json({ token: token });
+        res.json({
+            success: true,
+            token: token
+        });
     }
     else {
         res.json({
