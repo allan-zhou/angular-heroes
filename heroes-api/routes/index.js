@@ -7,28 +7,6 @@ var config = require('../config/default');
 
 var router = express.Router();
 
-router.post('/auth', function (req, res, next) {
-    var username = req.body.username;
-    var password = req.body.password;
-
-    var result = db.users.find(o => o.username == username && o.password == password);
-    if (result) {
-        var cloned = _.clone(result);
-        delete cloned.password;
-        var token = getSignedToken(cloned);
-        res.json({
-            success: true,
-            token: token
-        });
-    }
-    else {
-        res.json({
-            success: false,
-            message: 'invalid user or password'
-        });
-    }
-});
-
 router.post('/auth/login', function (req, res, next) {
     var username = req.body.username;
     var password = req.body.password;
@@ -56,28 +34,35 @@ router.post('/auth/login', function (req, res, next) {
 })
 
 // 刷新token，使用oldtoken换取新的token
-// 请求格式：/auth/token?token=xxxxx
-router.post('/auth/token', function (req, res, next) {
+// 请求格式：/auth/refreshtoken?token=xxxxx
+router.get('/auth/refreshtoken', function (req, res, next) {
     var token = req.query.token;
 
     var dToken = jwt.decode(token);//解析token
-    var username = dToken.username;
-    var password = dToken.password;
-    var result = db.users.find(o => o.username == username && o.password == password);
-    if (result) {
-        var cloned = _.clone(result);
-        var token = getSignedToken(cloned);
-
+    if (this.isTokenRefreshExpired(dToken.iat)) { //刷票过期时间3个小时
         res.json({
-            success: true,
-            token: token
+            success: false,
+            message: 'refresh expired'
         });
     }
     else {
-        res.json({
-            success: false,
-            message: 'invalid user or password'
-        });
+        var username = dToken.username;
+        var password = dToken.password;
+        var result = db.users.find(o => o.username == username && o.password == password);
+        if (result) {
+            var cloned = _.clone(result);
+            var token = getSignedToken(cloned);
+            res.json({
+                success: true,
+                token: token
+            });
+        }
+        else {
+            res.json({
+                success: false,
+                message: 'invalid user or password'
+            });
+        }
     }
 })
 
@@ -95,6 +80,14 @@ router.post('/auth/register', function (req, res, next) {
 
 function getSignedToken(data) {
     return jwt.sign(data, config.jwt.secret, { expiresIn: config.jwt.expiresIn });
+}
+
+function isTokenExpired(expiresIn) {
+    return Math.floor(Date.now() / 1000) - expiresIn > 60 * 60 * 3;
+}
+
+function isTokenRefreshExpired(expiresIn) {
+    return Math.floor(Date.now() / 1000) - expiresIn > 60 * 60;
 }
 
 module.exports = router;

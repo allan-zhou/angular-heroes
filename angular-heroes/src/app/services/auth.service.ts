@@ -16,18 +16,22 @@ export class AuthService {
         private http: HttpClient
     ) { }
 
-    getToken(loginForm: LoginFrom): Observable<any> {
-        console.log(loginForm);
-        return this.http.post(this.authUrl, loginForm, httpOptions);
-    }
-
-    getAuthorizationHeader(): Observable<any> {
-        return this.http.post(this.authUrl, this.loginForm, httpOptions);
-        // return `Bearer ${token}`;
-    }
-
     login(loginForm: LoginFrom): Observable<any> {
         const url = `${this.authUrl}/login`;
         return this.http.post(url, loginForm, httpOptions);
+    }
+
+    refreshToken(token: string): Observable<any> {
+        const url = `${this.authUrl}/refreshtoken?token=${token}`;
+
+        return this.http.get(this.authUrl, httpOptions);
+    }
+
+    isLoggedIn(): boolean {
+        const user = localStorage.getItem('CurrentUser');
+        if (user) {
+            return true;
+        }
+        return false;
     }
 }

@@ -19,7 +19,8 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 // app.use(bearerToken());
-app.use(expressJWT({ secret: config.jwt.secret }).unless({ path: ['/api/auth/token', '/api/auth/register', '/api/auth/login'] }))
+
+app.use(expressJWT({ secret: config.jwt.secret }).unless({ path: ['/api/auth/register', '/api/auth/login','/api/auth/refreshtoken'] }));
 
 app.use(function (req, res, next) {
   // console.log(req.headers.authorization);
@@ -47,15 +48,8 @@ app.use(function (err, req, res, next) {
     success: false,
     message: err.message || 'server error'
   };
+  res.status(err.status);
   res.json(response);
 });
-
-function getErrorMessage(field) {
-  var response = {
-    success: false,
-    message: field + ' field is missing or Invalid in the request'
-  };
-  return response;
-}
 
 module.exports = app;
