@@ -84,6 +84,55 @@ let db = {
                 "nickName": "ADMIN"
             }
         }
+    ],
+    commodities: [
+        {
+            id: 1,
+            name: 'iphone x 128G',
+            thumb: '',
+            price: 7888,
+            category: {
+                id: 1,
+                name: '手机'
+            },
+            color: {
+                id: 1,
+                name: '亮黑色'
+            },
+            createBy: {
+                "id": 1,
+                "username": "admin",
+                "nickName": "ADMIN"
+            }
+        }
+    ],
+    commodityCategory: [
+        {
+            id: 1,
+            name: '手机'
+        },
+        {
+            id: 2,
+            name: '电视'
+        },
+        {
+            id: 2,
+            name: '冰箱'
+        }
+    ],
+    commodityColor: [
+        {
+            id: 1,
+            name: '亮黑色',
+        },
+        {
+            id: 2,
+            name: '深邃蓝',
+        },
+        {
+            id: 3,
+            name: '中国红',
+        }
     ]
 };
 

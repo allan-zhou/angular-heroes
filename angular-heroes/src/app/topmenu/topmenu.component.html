@@ -2,6 +2,7 @@
 <nav>
   <a *ngIf="currentUser" routerLink="/dashboard">Dashboard</a>
   <a *ngIf="currentUser" routerLink="/heroes">Heroes</a>
+  <a *ngIf="currentUser" routerLink="/commodities">commodities</a>
   <a *ngIf="!currentUser" routerLink="/login">login</a>
   <a *ngIf="currentUser" (click)="logout()" >logout</a>
 </nav>

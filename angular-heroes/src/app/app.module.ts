@@ -14,12 +14,15 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroesComponent } from './heroes/heroes.component';
 import { LoginComponent } from './login/login.component';
 import { TopmenuComponent } from './topmenu/topmenu.component';
+import { CommoditiesComponent } from './commodity/commodities/commodities.component';
 
 import { HeroService } from './services/hero.service';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
+import { CommodityService } from './services/commodities.service';
 import { NoopInterceptor } from './interceptor/noop.interceptor';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +31,8 @@ import { AuthInterceptor } from './interceptor/auth.interceptor';
     DashboardComponent,
     HeroesComponent,
     LoginComponent,
-    TopmenuComponent
+    TopmenuComponent,
+    CommoditiesComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +46,7 @@ import { AuthInterceptor } from './interceptor/auth.interceptor';
     AuthService,
     HeroService,
     UserService,
+    CommodityService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

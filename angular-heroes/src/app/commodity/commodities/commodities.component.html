@@ -1,0 +1,22 @@
+<table class="table table-hover table-striped">
+    <thead>
+        <tr>
+            <th>序号</th>
+            <th>名称</th>
+            <th>类别</th>
+            <th>颜色</th>
+            <th>价格</th>
+            <th>创建人</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let commodity of commodities">
+            <td></td>
+            <td>{{commodity.name}}</td>
+            <td>{{commodity.category.name}}</td>
+            <td>{{commodity.color.name}}</td>
+            <td>{{commodity.price}}</td>
+            <td>{{commodity.createBy.nickName}}</td>
+        </tr>
+    </tbody>
+</table>

@@ -14,9 +14,6 @@ router.get('/:id', function (req, res, next) {
 });
 
 router.post('/', function (req, res, next) {
-  console.log('heroes' + req);
-  console.log(req.body);
-  console.log(req.headers);
   let hero = {
     id: _.maxBy(db.heroes, o => o.id).id + 1,
     name: req.body.name,
