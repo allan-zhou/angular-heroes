@@ -21,14 +21,14 @@ export class HeroDetailComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit():void{
+  ngOnInit(): void {
     this.getHero();
   }
 
   getHero(): void {
     const id = +this.activated.snapshot.paramMap.get('id');
     this.heroService.getHero(id)
-      .subscribe(hero => this.hero = hero);
+      .then(hero => this.hero = hero);
   }
 
   goBack(): void {
@@ -38,6 +38,6 @@ export class HeroDetailComponent implements OnInit {
 
   save(): void {
     this.heroService.updateHero(this.hero)
-      .subscribe(() => this.goBack());
+      .then(() => this.goBack());
   }
 }
