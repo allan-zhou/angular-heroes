@@ -20,7 +20,7 @@ export class AuthInterceptor implements HttpInterceptor {
         // Clone the request to add the new header.
         const authReq = req.clone({ headers: req.headers.set('Authorization', 'Bearer ' + localStorage.getItem('JWToken')) });
 
-        console.log(authReq);
+        // console.log(authReq);
 
         return next.handle(authReq);
     }

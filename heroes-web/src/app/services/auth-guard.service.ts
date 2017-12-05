@@ -36,6 +36,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
 
     var result = false;
     this.authService.refreshToken(token).subscribe(data => {
+      console.log(data);
       if (data.success) {
         localStorage.setItem('JWToken', data.token);
         result = true;
