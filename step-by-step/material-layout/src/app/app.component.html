@@ -1,0 +1,23 @@
+<mat-toolbar class="app-header">
+    <span>Application Title</span>
+    <button mat-button (click)="sidenav.toggle()">左导航</button>
+    <button mat-button>主菜单一</button>
+    <button mat-button>主菜单二</button>
+</mat-toolbar>
+
+<mat-sidenav-container class="app-container">
+    <mat-sidenav mode="side" opened="true" class="app-sidenav" #sidenav>
+        <mat-nav-list>
+            <mat-list-item *ngFor="let link of links">
+                <mat-icon matListIcon>home</mat-icon>
+                <a class="mat-button" routerLink={{link.url}}>{{ link.name }}</a>
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content class="app-content">
+
+        <router-outlet></router-outlet>
+
+    </mat-sidenav-content>
+</mat-sidenav-container>
