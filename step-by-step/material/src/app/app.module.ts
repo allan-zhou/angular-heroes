@@ -1,14 +1,26 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatSidenavModule } from '@angular/material/sidenav'
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppComponent } from './app.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+
+/* Routing Modules */
+import { AppRoutingModule } from './app-routing.module';
+
+/* Components */
+import { AppComponent } from './app.component'
+
+/* Feature Modules */
+import { DashboardModule } from './dashboard/dashboard.module';
 
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent],
-  imports: [BrowserModule, BrowserAnimationsModule, MatSidenavModule],
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    
+    AppRoutingModule,
+    DashboardModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

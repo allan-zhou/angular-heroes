@@ -1,0 +1,18 @@
+<mat-toolbar class="app-header">
+    <span>Application Title</span>
+    <button mat-button>AA</button>
+</mat-toolbar>
+
+<mat-sidenav-container class="app-container">
+    <mat-sidenav mode="side" opened="true" class="app-sidenav" #sidenav>
+        nav
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+
+        <p><button mat-button (click)="sidenav.toggle()">sidenav.toggle()</button></p>
+
+        <router-outlet></router-outlet>
+
+    </mat-sidenav-content>
+</mat-sidenav-container>
