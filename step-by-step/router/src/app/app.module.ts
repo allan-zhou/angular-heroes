@@ -8,6 +8,7 @@ import { AppRoutingModule } from './routing/app-routing.module';
 /* Component */
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './shared/not-found.component';
+import { MessageComponent } from './shared/message.component';
 
 /* service */
 import { MenuService, UserService } from './service/index.service';
@@ -28,7 +29,8 @@ import { LoginModule} from './login/login.module';
   declarations: [
     AppComponent,
 
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    MessageComponent
   ],
   providers: [MenuService, UserService],
   bootstrap: [AppComponent]
