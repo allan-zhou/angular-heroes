@@ -11,11 +11,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LayoutComponent } from './layout/layout.component';
 import { ChartsComponent } from './charts/charts.component';
 import { ProfileComponent } from './profile/profile.component';
-import { ReportsComponent} from './reports/reports.component';
-import { SettingsComponent} from './settings/settings.component';
-import { ContactListComponent} from './contact/contact-list.component';
-import { ContactEditComponent} from './contact/contact-edit.component';
-import { ContactDetailComponent} from './contact/contact-detail.component';
+import { ReportsComponent } from './reports/reports.component';
+import { SettingsComponent } from './settings/settings.component';
+import { ContactListComponent } from './contact/contact-list.component';
+import { ContactEditComponent } from './contact/contact-edit.component';
+import { ContactDetailComponent } from './contact/contact-detail.component';
 
 /* @angular/material */
 import {
@@ -27,7 +27,18 @@ import {
   MatCardModule,
   MatGridListModule,
   MatTableModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+
+  // form相关
+  MatFormFieldModule,
+  MatInputModule,
+  MatRadioModule,
+  MatSelectModule,
+  MatSliderModule,
+  MatSlideToggleModule,
+  MatDatepickerModule,
+  MatCheckboxModule,
+  MatAutocompleteModule
 } from '@angular/material';
 
 @NgModule({
@@ -58,7 +69,18 @@ import {
     MatCardModule,
     MatGridListModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+
+    // form相关
+    MatFormFieldModule,
+    MatInputModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatDatepickerModule,
+    MatCheckboxModule,
+    MatAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent]

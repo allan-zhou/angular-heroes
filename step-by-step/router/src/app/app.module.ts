@@ -1,31 +1,36 @@
-import { NgModule }             from '@angular/core';
-import { BrowserModule }        from '@angular/platform-browser';
-import { FormsModule }          from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
-import { AppComponent }          from './app.component';
-import { CrisisListComponent }   from './crisis-list.component';
-import { HeroListComponent }     from './hero-list.component';
+/* Routing */
+import { AppRoutingModule } from './routing/app-routing.module';
 
-const appRoutes: Routes = [
-  { path: 'crisis-center', component: CrisisListComponent },
-  { path: 'heroes', component: HeroListComponent },
-];
+/* Component */
+import { AppComponent } from './app.component';
+import { PageNotFoundComponent } from './shared/not-found.component';
+
+/* service */
+import { MenuService, UserService } from './service/index.service';
+
+/* Feature Modules */
+import { DashboardModule } from './dashboard/dashboard.module';
+import { LoginModule} from './login/login.module';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
-    )
+
+    AppRoutingModule,
+    DashboardModule,
+    LoginModule
   ],
   declarations: [
     AppComponent,
-    HeroListComponent,
-    CrisisListComponent,
+
+    PageNotFoundComponent
   ],
-  bootstrap: [ AppComponent ]
+  providers: [MenuService, UserService],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

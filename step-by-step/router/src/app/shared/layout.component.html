@@ -1,0 +1,23 @@
+<div class="container-fluid app-container">
+    <div class="row container-fluid app-header">
+        <div class="row">
+            <div class="col-md-8">
+                <a class="menu-link" *ngFor="let menu of menus" routerLink="{{menu.url}}" routerLinkActive="menu-link-active">{{ menu.name}}</a>
+            </div>
+            <div *ngIf="currentUser" class="col-md-4">
+
+                <div class="pull-right">
+                    <span>{{currentUser}}</span>
+                    <a class="menu-link" (click)="logout()">logout</a>
+                </div>
+            </div>
+            <div *ngIf="!currentUser" class="col-md-4">
+                <a class="menu-link pull-right" routerLink="/login">login</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row container app-content">
+        <router-outlet></router-outlet>
+    </div>
+</div>
