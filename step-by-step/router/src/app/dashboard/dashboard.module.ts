@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { DashboardRoutingModule } from '../routing/dashboard-routing.module';
 
 /* Component */
-import { LayoutComponent } from '../shared/index.component';
+import { LayoutComponent } from '../shared/layout.component';
 import { ProjectListComponent } from './project-list.component';
 
 @NgModule({

@@ -11,7 +11,6 @@ import { DashboardModule } from '../dashboard/dashboard.module';
 export const routes: Routes = [
     { path: 'message', component: MessageComponent, outlet: 'popup' },
     { path: 'dashboard', loadChildren: 'app/dashboard/dashboard.module#DashboardModule' },
-    { path: 'login', loadChildren: 'app/login/login.module#LoginModule' },
     { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
     { path: '**', component: PageNotFoundComponent }
 ];
