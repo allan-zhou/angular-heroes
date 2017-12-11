@@ -11,11 +11,16 @@ export const routes: Routes = [
         children: [
             {
                 path: '',
-                component: ProjectListComponent
-            },
-            {
-                path: 'projects',
-                component: ProjectListComponent
+                children: [
+                    {
+                        path: '',
+                        component: ProjectListComponent
+                    },
+                    {
+                        path: 'projects',
+                        component: ProjectListComponent
+                    }
+                ]
             }
         ]
     }

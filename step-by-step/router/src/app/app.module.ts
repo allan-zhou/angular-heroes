@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 /* Routing */
 import { AppRoutingModule } from './routing/app-routing.module';
@@ -15,16 +16,16 @@ import { MenuService, UserService } from './service/index.service';
 
 /* Feature Modules */
 import { DashboardModule } from './dashboard/dashboard.module';
-import { LoginModule} from './login/login.module';
+import { LoginModule } from './login/login.module';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
 
-    AppRoutingModule,
     DashboardModule,
-    LoginModule
+    LoginModule,
+    AppRoutingModule,
   ],
   declarations: [
     AppComponent,
@@ -35,4 +36,8 @@ import { LoginModule} from './login/login.module';
   providers: [MenuService, UserService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(router: Router) {
+    console.log('Routes: ', JSON.stringify(router.config, undefined, 2));
+  }
+}

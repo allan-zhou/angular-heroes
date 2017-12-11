@@ -3,16 +3,16 @@ import { RouterModule, Routes } from '@angular/router';
 
 /* Components */
 import { PageNotFoundComponent } from '../shared/not-found.component';
-import { MessageComponent} from '../shared/message.component';
+import { MessageComponent } from '../shared/message.component';
 
 /* Feature Modules */
 import { DashboardModule } from '../dashboard/dashboard.module';
 
 export const routes: Routes = [
     { path: 'message', component: MessageComponent, outlet: 'popup' },
-    { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
     { path: 'dashboard', loadChildren: 'app/dashboard/dashboard.module#DashboardModule' },
-    { path: 'login', loadChildren: 'app/login/login.module#LoginModule' },    
+    { path: 'login', loadChildren: 'app/login/login.module#LoginModule' },
+    { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
     { path: '**', component: PageNotFoundComponent }
 ];
 
