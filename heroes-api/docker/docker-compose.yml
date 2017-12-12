@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  mongo-express:
+    image: "mongo-express"
+    ports:
+     - "8081:8081"
+    links:
+     - mongo
+    container_name: mongo-express
+  mongo:
+    image: "zhoujl/mongo"
+    ports:
+     - "27017:27017"
+    container_name: mongo

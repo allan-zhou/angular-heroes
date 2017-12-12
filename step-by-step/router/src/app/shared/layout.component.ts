@@ -22,11 +22,6 @@ export class LayoutComponent implements OnInit {
   ngOnInit() {
     this.getCurrentUser();
     this.getMenus();
-
-    setTimeout(() => {
-      // this.router.navigate([{ outlets: { popup: 'message' } }]);
-      // this.router.navigate(['team', 33, 'user', 11]);
-    }, 1000);
   }
 
   getCurrentUser() {

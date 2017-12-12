@@ -13,6 +13,7 @@ import { map } from 'rxjs/operator/map';
 export class ProjectListComponent implements OnInit {
     tips: string = '';
     urlParams: string = ''
+    fontSize: number = 10;
 
     constructor(private activatedRouted: ActivatedRoute) { }
 

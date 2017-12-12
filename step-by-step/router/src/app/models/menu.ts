@@ -9,5 +9,6 @@ export let MenuData: Menu[] =[
     { name: '群组', url: '/dashboard/groups', desc: '' },
     { name: '活动', url: '/dashboard/activity', desc: '' },
     { name: '里程碑', url: '/dashboard/milestones', desc: '' },
-    { name: '代码片段', url: '/dashboard/snippets', desc: '' }
+    { name: '代码片段', url: '/dashboard/snippets', desc: '' },
+    { name: '测试', url: '/demo', desc: '' },
 ]

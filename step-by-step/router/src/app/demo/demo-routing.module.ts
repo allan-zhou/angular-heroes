@@ -2,7 +2,13 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { LayoutComponent } from '../shared/layout.component';
-import { ProjectListComponent } from '../dashboard/index.component';
+import { LayoutComponent as DemoLayoutComponent } from './layout/layout.component';
+import { SizerComponent } from './sizer/sizer.component';
+
+const matcher = (s: any, g: any, r: any) => {
+    debugger;
+    return null;
+};
 
 export const routes: Routes = [
     {
@@ -11,24 +17,22 @@ export const routes: Routes = [
         children: [
             {
                 path: '',
+                component: DemoLayoutComponent,
                 children: [
                     {
-                        path: '',
-                        component: ProjectListComponent
-                    },
-                    {
-                        path: 'projects',
-                        component: ProjectListComponent
+                        path: 'sizer',
+                        pathMatch:'full',
+                        component: SizerComponent
                     }
                 ]
             }
         ]
     }
-]
+];
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
 
-export class DashboardRoutingModule { }
+export class DemoRoutingModule { }

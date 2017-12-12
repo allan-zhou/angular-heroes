@@ -1,16 +1,15 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-/* Routing */
-import { DashboardRoutingModule } from '../routing/dashboard-routing.module';
+/* Modules(Routing) */
+import { DashboardRoutingModule } from './dashboard-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 /* Component */
-import { LayoutComponent } from '../shared/layout.component';
 import { ProjectListComponent } from './project-list.component';
 
 @NgModule({
-    imports: [CommonModule, DashboardRoutingModule],
-    declarations: [LayoutComponent, ProjectListComponent]
+    imports: [SharedModule, DashboardRoutingModule],
+    declarations: [ProjectListComponent]
 })
 
 export class DashboardModule { };

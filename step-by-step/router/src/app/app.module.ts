@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
 /* Routing */
-import { AppRoutingModule } from './routing/app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 
 /* Component */
 import { AppComponent } from './app.component';
@@ -17,6 +17,7 @@ import { MenuService, UserService } from './service/index.service';
 /* Feature Modules */
 import { DashboardModule } from './dashboard/dashboard.module';
 import { LoginModule } from './login/login.module';
+import { DemoModule } from './demo/demo.module';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { LoginModule } from './login/login.module';
 
     DashboardModule,
     LoginModule,
+    DemoModule,
     AppRoutingModule,
   ],
   declarations: [
@@ -38,6 +40,6 @@ import { LoginModule } from './login/login.module';
 })
 export class AppModule {
   constructor(router: Router) {
-    console.log('Routes: ', JSON.stringify(router.config, undefined, 2));
+    // console.log('Routes: ', JSON.stringify(router.config, undefined, 2));
   }
 }
