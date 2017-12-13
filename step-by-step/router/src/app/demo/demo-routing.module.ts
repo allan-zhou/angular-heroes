@@ -3,12 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { LayoutComponent } from '../shared/layout.component';
 import { LayoutComponent as DemoLayoutComponent } from './layout/layout.component';
+import { DemoComponent } from './demo/demo.component';
 import { SizerComponent } from './sizer/sizer.component';
-
-const matcher = (s: any, g: any, r: any) => {
-    debugger;
-    return null;
-};
+import { StruDirectivesComponent } from './stru-directives/stru-directives.component';
+import { AttrDirectivesComponent } from './attr-directives/attr-directives.component';
 
 export const routes: Routes = [
     {
@@ -21,8 +19,24 @@ export const routes: Routes = [
                 children: [
                     {
                         path: 'sizer',
-                        pathMatch:'full',
                         component: SizerComponent
+                    },
+                    {
+                        path: 'attr-directives',
+                        component: AttrDirectivesComponent
+                    },
+                    {
+                        path: 'stru-directives',
+                        component: StruDirectivesComponent
+                    },
+                    {
+                        path: 'home',
+                        component: DemoComponent
+                    },
+                    {
+                        path: '',
+                        redirectTo: 'home',
+                        pathMatch: 'full'
                     }
                 ]
             }

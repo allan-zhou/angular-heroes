@@ -4,13 +4,16 @@
 
     <ul class="nav-sidebar">
       <li>
+        <a routerLink='./home' routerLinkActive="active">Home</a>
+      </li>
+      <li>
         <a routerLink='./sizer' routerLinkActive="active">sizer</a>
       </li>
       <li>
-        <a routerLink='./demo' routerLinkActive="active">Analytics</a>
+        <a routerLink='./attr-directives' routerLinkActive="active">Built-in attribute directives</a>
       </li>
       <li>
-        <a routerLink='./demo' routerLinkActive="active">Export</a>
+        <a routerLink='./stru-directives' routerLinkActive="active">Built-in structural directives</a>
       </li>
     </ul>
     <ul class="nav-sidebar">
@@ -23,12 +26,6 @@
   <!-- main -->
   <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <router-outlet></router-outlet>
-    <demo-sizer [size]="12" (sizeChange)="$event"></demo-sizer>
-
-    <demo-sizer [(size)]="fontSize"></demo-sizer>
-    <div [style.font-size.px]="fontSize">
-      wenzi文字
-    </div>
   </div>
 
 </div>
