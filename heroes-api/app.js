@@ -8,10 +8,7 @@ var bearerToken = require('express-bearer-token');
 var expressJWT = require('express-jwt');
 
 var config = require('./config/default');
-var index = require('./routes/index');
-var users = require('./routes/users');
-var heroes = require('./routes/heroes');
-var commodities = require('./routes/commodities');
+var { AuthRote, UsersRote, HeroesRote, CommoditiesRote } = require('./routes/index');
 
 var app = express();
 
@@ -20,7 +17,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 // app.use(bearerToken());
 
-app.use(expressJWT({ secret: config.jwt.secret }).unless({ path: ['/api/auth/register', '/api/auth/login','/api/auth/refreshtoken'] }));
+app.use(expressJWT({ secret: config.jwt.secret }).unless({ path: ['/api/auth/register', '/api/auth/login', '/api/auth/refreshtoken'] }));
 
 app.use(function (req, res, next) {
   // console.log(req.headers.authorization);
@@ -30,10 +27,10 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use('/api', index);
-app.use('/api/users', users);
-app.use('/api/heroes', heroes);
-app.use('/api/commodities', commodities);
+app.use('/api', AuthRote);
+app.use('/api/users', UsersRote);
+app.use('/api/heroes', HeroesRote);
+app.use('/api/commodities', CommoditiesRote);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

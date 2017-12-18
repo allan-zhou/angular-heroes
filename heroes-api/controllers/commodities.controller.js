@@ -1,20 +1,18 @@
-var express = require('express');
 var db = require('../mock-db');
 var _ = require('lodash');
 var format = require('../common/format');
-var router = express.Router();
 
-router.get('/', function (req, res, next) {
+exports.getlist = function (req, res) {
     res.json(db.commodities);
-});
+};
 
-router.get('/:id', function (req, res, next) {
+exports.getById = function (req, res) {
     let id = req.params.id;
 
     res.json(db.commodities.find(it => it.id == id));
-});
+};
 
-router.post('/', function (req, res, next) {
+exports.create = function (req, res) {
     let commodity = {
         id: _.maxBy(db.commodities, o => o.id).id + 1,
         name: req.body.name,
@@ -25,9 +23,9 @@ router.post('/', function (req, res, next) {
     };
     db.commodities.push(commodity);
     res.json(commodity);
-});
+};
 
-router.delete('/:id', function (req, res, next) {
+exports.deleteById = function (req, res) {
     let id = req.params.id;
 
     _.remove(db.commodities, o => o.id == id);
@@ -35,9 +33,9 @@ router.delete('/:id', function (req, res, next) {
     res.json({
         success: true
     });
-});
+};
 
-router.put('/:id', function (req, res, next) {
+exports.updateById = function (req, res) {
     let id = req.params.id;
 
     var commodity = db.commodities.find(o => o.id == id);
@@ -49,6 +47,5 @@ router.put('/:id', function (req, res, next) {
     res.json({
         success: true
     });
-});
+};
 
-module.exports = router;
