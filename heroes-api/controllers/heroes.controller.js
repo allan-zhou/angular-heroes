@@ -2,6 +2,7 @@ var db = require('../mock-db');
 var _ = require('lodash');
 
 exports.getlist = function (req, res) {
+    throw new Error('db error');
     res.json(db.heroes);
 };
 

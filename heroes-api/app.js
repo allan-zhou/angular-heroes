@@ -9,6 +9,8 @@ var expressJWT = require('express-jwt');
 
 var config = require('./config/default');
 var { AuthRote, UsersRote, HeroesRote, CommoditiesRote } = require('./routes/index');
+var { ApiErrorHandler, ApiNotFoundHandler } = require('./middleware/index');
+
 
 var app = express();
 
@@ -32,21 +34,10 @@ app.use('/api/users', UsersRote);
 app.use('/api/heroes', HeroesRote);
 app.use('/api/commodities', CommoditiesRote);
 
-// catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
 
+// 404 handler
+app.use(ApiNotFoundHandler);
 // error handler
-app.use(function (err, req, res, next) {
-  var response = {
-    success: false,
-    message: err.message || 'server error'
-  };
-  res.status(err.status);
-  res.json(response);
-});
+app.use(ApiErrorHandler);
 
 module.exports = app;
