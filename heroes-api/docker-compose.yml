@@ -1,0 +1,39 @@
+version: "2"
+
+services:
+  heroes-api1:
+    image: node:6
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - PORT=3001
+    volumes:
+      - ./:/home/node/app
+    ports:
+      - "3001:3001"
+    command: ["node","server.js"]
+    container_name: heroes-api1
+  heroes-api2:
+    image: node:6
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - PORT=3002
+    volumes:
+      - ./:/home/node/app
+    ports:
+      - "3002:3002"
+    command: ["node","server.js"]
+    container_name: heroes-api2
+  heroes-api3:
+    image: node:6
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - PORT=3003
+    volumes:
+      - ./:/home/node/app
+    ports:
+      - "3003:3003"
+    command: ["node","server.js"]
+    container_name: heroes-api3

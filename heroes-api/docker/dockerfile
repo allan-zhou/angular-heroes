@@ -1,0 +1,14 @@
+FROM node:6
+LABEL maintainer="izhoujialiang@qq.com"
+
+EXPOSE 3000
+
+WORKDIR /home/node/app
+
+ENV NODE_ENV=production
+
+COPY ./ ./
+
+CMD ["node","server.js"]
+
+USER node
